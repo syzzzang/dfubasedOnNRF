@@ -20,7 +20,8 @@
   ~ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
   ~ USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   -->
-<androidx.drawerlayout.widget.DrawerLayout android:id="@+id/drawer_layout"
+<LinearLayout
+	android:id="@+id/drawer_layout"
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	xmlns:tools="http://schemas.android.com/tools"
@@ -34,40 +35,9 @@
 		android:layout_height="match_parent"
 		android:orientation="vertical">
 
-		<include
-			android:id="@+id/toolbar_actionbar"
-			layout="@layout/toolbar"/>
-
-		<FrameLayout
-			style="@style/HeaderShadow"
-			android:layout_width="match_parent"
-			android:layout_height="0dp"
-			android:layout_weight="1">
 
 
-			<GridView
-				android:id="@+id/grid"
-				android:layout_width="match_parent"
-				android:layout_height="match_parent"
-				android:cacheColorHint="@null"
-				android:columnWidth="100dp"
-				android:gravity="center_horizontal"
-				android:horizontalSpacing="10dp"
-				android:listSelector="@null"
-				android:numColumns="auto_fit"
-				android:paddingLeft="@dimen/activity_horizontal_margin"
-				android:paddingRight="@dimen/activity_horizontal_margin"
-				android:paddingTop="@dimen/feature_grid_margin_top"
-				android:scrollbarStyle="outsideOverlay"
-				android:stretchMode="columnWidth"/>
 
-			<androidx.appcompat.widget.AppCompatTextView
-				android:id="@android:id/empty"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:layout_gravity="center"
-				android:text="@string/no_apps"/>
-		</FrameLayout>
 		<Button
 			android:id="@+id/btn"
 			android:layout_width="80dp"
@@ -77,20 +47,5 @@
 		</Button>
 	</LinearLayout>
 
-	<!-- The navigation drawer -->
-	<com.google.android.material.navigation.NavigationView
-		android:layout_width="@dimen/navdrawer_width"
-		android:layout_height="match_parent"
-		android:layout_gravity="start"
-		android:background="#FFFFFFFF"
-		android:fitsSystemWindows="true"
-		app:insetForeground="#2000">
 
-		<include
-			layout="@layout/drawer"
-			android:layout_width="match_parent"
-			android:layout_height="match_parent"
-			android:layout_gravity="start"/>
-	</com.google.android.material.navigation.NavigationView>
-
-</androidx.drawerlayout.widget.DrawerLayout>
+</LinearLayout>

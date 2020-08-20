@@ -28,9 +28,6 @@
 	android:orientation="vertical"
 	tools:context=".dfu.DfuActivity">
 
-	<include
-		android:id="@+id/toolbar_actionbar"
-		layout="@layout/toolbar"/>
 
 	<no.nordicsemi.android.nrftoolbox.widget.ForegroundRelativeLayout
 		style="@style/HeaderShadow"
