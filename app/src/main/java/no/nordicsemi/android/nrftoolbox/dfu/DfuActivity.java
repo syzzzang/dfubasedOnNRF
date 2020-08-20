@@ -284,9 +284,7 @@ public class DfuActivity extends AppCompatActivity implements LoaderCallbacks<Cu
 	}
 
 	private void setGUI() {
-        final Toolbar toolbar = findViewById(R.id.toolbar_actionbar);
-        setSupportActionBar(toolbar);
-		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
 		deviceNameView = findViewById(R.id.device_name);
 		fileNameView = findViewById(R.id.file_name);
@@ -360,11 +358,7 @@ public class DfuActivity extends AppCompatActivity implements LoaderCallbacks<Cu
 		dialog.show(getSupportFragmentManager(), "scan_fragment");
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(final Menu menu) {
-		getMenuInflater().inflate(R.menu.settings_and_about, menu);
-		return true;
-	}
+
 
 	@Override
 	public boolean onOptionsItemSelected(final MenuItem item) {
