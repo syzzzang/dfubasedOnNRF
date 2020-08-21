@@ -283,13 +283,14 @@
 				android:text="@string/dfu_lib_version"
 				android:textSize="12sp" />
 
-			<EditText
+			<Button
 				android:id="@+id/edtRaw"
+				android:text="DOWNLOAD"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_marginTop="20dp">
 
-			</EditText>
+			</Button>
 
 		</LinearLayout>
 

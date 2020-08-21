@@ -244,7 +244,15 @@ public class DfuActivity extends AppCompatActivity implements LoaderCallbacks<Cu
 			showBLEDialog();
 		}
 		setGUI();
-
+		Button edtraw=findViewById(R.id.edtRaw);
+		edtraw.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Uri uri = Uri.parse("https://drive.google.com/drive/folders/1EbSxhxCkEpAx_Fr7OP9hTUl2UmRjwyB1?usp=sharing"); // missing 'http://' will cause crashed
+				Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+				startActivity(intent);
+			}
+		});
 
 
 
