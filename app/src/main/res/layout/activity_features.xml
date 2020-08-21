@@ -45,6 +45,12 @@
 			>
 
 		</Button>
+
+		<TextView
+			android:id="@+id/tv"
+			android:text="fffffffffffffff"
+			android:layout_width="80dp"
+			android:layout_height="90dp"/>
 	</LinearLayout>
 
 

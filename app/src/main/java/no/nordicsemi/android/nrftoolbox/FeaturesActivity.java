@@ -23,27 +23,43 @@ package no.nordicsemi.android.nrftoolbox;
 
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+
 import no.nordicsemi.android.nrftoolbox.dfu.DfuActivity;
 
 public class FeaturesActivity extends AppCompatActivity {
-
+	private static final int SELECT_FILE_REQ = 1;
+	private static final int SELECT_INIT_FILE_REQ = 2;
+	TextView tv;
 	@Override
 	protected void onCreate(final Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_features);
+		tv=findViewById(R.id.tv);
 
 		Button btn=findViewById(R.id.btn);
 		btn.setOnClickListener(v -> {
-			Intent intent=new Intent(getApplicationContext(),DfuActivity.class);
-			startActivity(intent);
+			//Intent intent=new Intent(getApplicationContext(),DfuActivity.class);
+			//startActivity(intent);
+				String path = "android.resource://" + getPackageName() + "/" + R.raw.fw_v108;
+				Log.d("rawpath",path);
+				Uri uri=Uri.parse(path);
+				String p=uri.getPath();
+				File file=new File(p);
+			 	tv.setText(file.getName());
 		});
 
 		// ensure that Bluetooth exists
@@ -51,7 +67,24 @@ public class FeaturesActivity extends AppCompatActivity {
 			finish();
 
 	}
+	@Override
+	protected void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
 
+				// and read new one
+				final Uri uri = data.getData();
+				/*
+				 * The URI returned from application may be in 'file' or 'content' schema. 'File' schema allows us to create a File object and read details from if
+				 * directly. Data from 'Content' schema must be read by Content Provider. To do that we are using a Loader.
+				 */
+				if (uri.getScheme().equals("file")) {
+					// the direct path to the file has been returned
+					final String path = uri.getPath();
+					final File file = new File(path);
+					tv.setText(file.getName());
+ 				}
+
+	}
 	private boolean ensureBLEExists() {
 		if (!getPackageManager().hasSystemFeature(PackageManager.FEATURE_BLUETOOTH_LE)) {
 			Toast.makeText(this, R.string.no_ble, Toast.LENGTH_LONG).show();
