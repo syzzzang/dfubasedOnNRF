@@ -46,7 +46,9 @@
 		android:label="@string/app_name"
 		android:theme="@style/AppTheme"
 		android:name=".ToolboxApplication"
-		tools:ignore="GoogleAppIndexingWarning" >
+		tools:ignore="GoogleAppIndexingWarning"
+		android:requestLegacyExternalStorage="true"
+		tools:targetApi="q">
 
 		<meta-data
 			android:name="com.google.android.gms.version"

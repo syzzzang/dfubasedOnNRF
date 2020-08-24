@@ -21,6 +21,7 @@
  */
 package no.nordicsemi.android.nrftoolbox.dfu;
 
+import android.Manifest;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningServiceInfo;
 import android.app.LoaderManager.LoaderCallbacks;
@@ -33,32 +34,38 @@ import android.content.Intent;
 import android.content.Loader;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.content.res.AssetManager;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.provider.MediaStore;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import no.nordicsemi.android.dfu.DfuProgressListener;
 import no.nordicsemi.android.dfu.DfuProgressListenerAdapter;
@@ -233,27 +240,45 @@ public class DfuActivity extends AppCompatActivity implements LoaderCallbacks<Cu
 		}
 	};
 
+
+
 	private Resources resources;
 	private String output;
+	private static final int MY_PERMISSION_RQUEST_STORAGE=1;
 	@Override
 	protected void onCreate(final Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_feature_dfu);
-		isBLESupported();
+		//isBLESupported();
 		if (!isBLEEnabled()) {
 			showBLEDialog();
 		}
+
 		setGUI();
 		Button edtraw=findViewById(R.id.edtRaw);
+
+		if(ContextCompat.checkSelfPermission(DfuActivity.this,
+				Manifest.permission.WRITE_EXTERNAL_STORAGE)!=PackageManager.PERMISSION_GRANTED){
+			if(ActivityCompat.shouldShowRequestPermissionRationale(DfuActivity.this,
+					Manifest.permission.WRITE_EXTERNAL_STORAGE)){
+				ActivityCompat.requestPermissions(DfuActivity.this,
+						new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, MY_PERMISSION_RQUEST_STORAGE);
+			}else{
+				ActivityCompat.requestPermissions(DfuActivity.this,
+						new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, MY_PERMISSION_RQUEST_STORAGE);
+			}
+		}else{
+
+		}
 		edtraw.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Uri uri = Uri.parse("https://drive.google.com/drive/folders/1EbSxhxCkEpAx_Fr7OP9hTUl2UmRjwyB1?usp=sharing"); // missing 'http://' will cause crashed
-				Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-				startActivity(intent);
+//				Uri uri = Uri.parse("https://drive.google.com/drive/folders/1g-m_6VM7nYQkdJwbt3QOjVi7EpHf171U"); // missing 'http://' will cause crashed
+//				Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+//				startActivity(intent);
+				copyAsset("fw_v111.zip");
 			}
 		});
-
 
 
 
@@ -275,6 +300,70 @@ public class DfuActivity extends AppCompatActivity implements LoaderCallbacks<Cu
 		}
 
 		DfuServiceListenerHelper.registerProgressListener(this, dfuProgressListener);
+	}
+
+	@Override
+	public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+		switch(requestCode){
+			case MY_PERMISSION_RQUEST_STORAGE:{
+				if(grantResults.length>0 &&grantResults[0]==PackageManager.PERMISSION_GRANTED){
+					if (ContextCompat.checkSelfPermission(DfuActivity.this,
+							Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+
+					}
+				}else{
+					Toast.makeText(this,"No permission granted",Toast.LENGTH_SHORT).show();
+				}
+			}
+		}
+	}
+	private void copyAsset(String filename){
+
+		//String dirPath=Environment.getExternalStorageDirectory().getAbsolutePath()+"/MyFiles";
+		String dirPath=Environment.getExternalStorageDirectory().getAbsolutePath()+"/"+Environment.DIRECTORY_DOWNLOADS;
+		Log.d("dirpath",dirPath);
+		File dir=new File(dirPath);
+		if(!dir.exists()){
+			dir.mkdirs();
+		}
+		AssetManager assetManager=getAssets();
+		InputStream in=null;
+		OutputStream out=null;
+
+		try{
+
+			in=assetManager.open(filename);
+			File outFile=new File(dirPath, filename);
+			out=new FileOutputStream(outFile);
+			copyFile(in,out);
+			Toast.makeText(this,"Saved!",Toast.LENGTH_SHORT).show();
+		}  catch (IOException e) {
+			e.printStackTrace();
+			Toast.makeText(this, "Failed", Toast.LENGTH_SHORT).show();
+		} finally{
+			if(in!=null){
+				try{
+					in.close();
+				}catch (IOException e){
+					e.printStackTrace();
+				}
+			}
+			if(out!=null){
+				try{
+					out.close();
+				}catch (IOException e){
+					e.printStackTrace();
+				}
+			}
+		}
+
+	}
+	private void copyFile(InputStream in, OutputStream out) throws IOException{
+		byte[] buffer=new byte[1024];
+		int read;
+		while((read=in.read(buffer))!=-1){
+			out.write(buffer,0,read);
+		}
 	}
 
 	@Override

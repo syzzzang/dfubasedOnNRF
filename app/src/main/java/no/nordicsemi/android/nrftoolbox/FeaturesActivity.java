@@ -84,8 +84,7 @@ public class FeaturesActivity extends AppCompatActivity {
 //				String p=uri.getPath();
 //				File file=new File(p);
 //			 	tv.setText(file.getName());
-			downloadFileFromRawFolder();
-		});
+ 		});
 
  		// ensure that Bluetooth exists
 		if (!ensureBLEExists())
@@ -136,31 +135,6 @@ public class FeaturesActivity extends AppCompatActivity {
 
 	}
 
-	public void saveResourceToFile() throws IOException {
-		InputStream in = null;
-		FileOutputStream fout = null;
-		try {
-			in = getResources().openRawResource(R.raw.fw_v108);
-			String downloadsDirectoryPath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath();
-			String filename = "myfile.zip";
-			fout = new FileOutputStream(new File(downloadsDirectoryPath + filename));
-
-			final byte data[] = new byte[1024];
-			int count;
-			while ((count = in.read(data, 0, 1024)) != -1) {
-				fout.write(data, 0, count);
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			if (in != null) {
-				in.close();
-			}
-			if (fout != null) {
-				fout.close();
-			}
-		}
-	}
 
 	private File checkFolder() {
 		String path;
