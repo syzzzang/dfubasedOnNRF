@@ -48,8 +48,7 @@
 
 			app:fontFamily="@font/notosansmedium"
 			android:includeFontPadding="false"
-			android:textAllCaps="true"
-			android:textAppearance="?android:attr/textAppearanceLarge"/>
+ 			android:textAppearance="?android:attr/textAppearanceLarge"/>
 		<View
 			android:background="@color/black"
 			android:layout_width="match_parent"
@@ -95,7 +94,7 @@
 			android:gravity="center"
 			android:includeFontPadding="false"
 			android:textSize="12sp"
-			android:text="2. SELECT FILE 버튼 클릭 \n-> 'Distribution packet(ZIP)' 선택 OK \n-> 다운로드 폴더에서 'fw_v111.zip' 선택\n-> 'All' 선택 OK"
+			android:text="2. SELECT FILE 버튼 클릭 \n-> 'Distribution packet(ZIP)' 선택 OK \n-> 다운로드 폴더에서 'fw_v112.zip' 선택\n-> 'All' 선택 OK"
 			app:fontFamily="@font/notosansblack">
 
 		</TextView>
