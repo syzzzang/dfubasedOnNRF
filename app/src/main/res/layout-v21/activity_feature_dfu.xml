@@ -26,16 +26,9 @@
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
 	android:orientation="vertical"
-	tools:context=".dfu.DfuActivity"
-	>
+	tools:context=".dfu.DfuActivity">
 
 
-	<no.nordicsemi.android.nrftoolbox.widget.ForegroundRelativeLayout
-		style="@style/HeaderShadow"
-		android:layout_width="match_parent"
-		android:layout_height="match_parent">
-
-		<!-- The size of text below must be fixed, therefore dp are used instead of sp -->
 
 
 
@@ -43,27 +36,23 @@
 			android:id="@+id/device_name"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:layout_centerHorizontal="true"
-			android:layout_marginTop="12dp"
+ 			android:layout_marginTop="12dp"
 			android:ellipsize="end"
-			android:freezesText="true"
-			android:maxLines="1"
-			android:textSize="30sp"
+
+			android:textSize="20sp"
 			android:text="REMIT DFU"
+			android:layout_gravity="center"
 
 			app:fontFamily="@font/notosansmedium"
 			android:includeFontPadding="false"
 			android:textAllCaps="true"
 			android:textAppearance="?android:attr/textAppearanceLarge"/>
 
-
 		<LinearLayout
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
-			android:layout_alignParentStart="true"
-			android:layout_alignParentTop="true"
-			android:layout_marginStart="-2dp"
-			android:layout_marginTop="-1dp"
+
+
 			android:gravity="center_horizontal"
 			android:orientation="vertical">
 
@@ -71,34 +60,35 @@
 			<TextView
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:layout_marginTop="70dp"
+				android:layout_marginTop="5dp"
 				android:gravity="center"
 				app:fontFamily="@font/notosansblack"
 				android:includeFontPadding="false"
+				android:textSize="12sp"
 				android:text="1. DOWNLOAD 버튼 클릭">
 
 			</TextView>
-
 			<Button
 				android:id="@+id/edtRaw"
 				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
+				android:layout_height="40dp"
 				android:backgroundTint="@color/nordicFall"
- 				android:text="DOWNLOAD"
+				android:text="DOWNLOAD"
 				tools:targetApi="lollipop"
 				app:fontFamily="@font/notosansblack"
 				android:includeFontPadding="false"
+				android:textSize="12sp"
+
 				>
 
 			</Button>
-
-
 			<TextView
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_marginTop="8dp"
 				android:gravity="center"
 				android:includeFontPadding="false"
+				android:textSize="12sp"
 				android:text="2. SELECT FILE 버튼 클릭 \n-> 'Distribution packet(ZIP)' 선택 OK \n-> 'fw_v111.zip' 선택 -> 'All' 선택 OK"
 				app:fontFamily="@font/notosansblack">
 
@@ -120,8 +110,10 @@
 					android:backgroundTint="#FFA85B"
 					android:text="@string/dfu_section_application_header"
 					tools:targetApi="lollipop"
-					app:fontFamily="@font/notosansblack"
-					android:includeFontPadding="false"/>
+					app:fontFamily="@font/notosansmedium"
+					android:includeFontPadding="false"
+					android:textSize="12sp"
+					/>
 
 				<TableLayout
 					android:layout_width="match_parent"
@@ -230,13 +222,15 @@
 					<com.google.android.material.button.MaterialButton
 						android:id="@+id/action_select_file"
 						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
+						android:layout_height="40dp"
 						android:backgroundTint="@color/nordicFall"
 						android:onClick="onSelectFileClicked"
 						android:text="@string/dfu_action_select_file"
 						tools:targetApi="lollipop"
 						app:fontFamily="@font/notosansblack"
-						android:includeFontPadding="false"/>
+						android:includeFontPadding="false"
+						android:textSize="12sp"
+						/>
 
 					<ImageView
 						android:layout_width="wrap_content"
@@ -247,17 +241,42 @@
 				</LinearLayout>
 			</LinearLayout>
 
-			<!-- DFU section -->
 			<TextView
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:layout_marginTop="8dp"
+				android:layout_marginTop="5dp"
 				android:gravity="center"
+				android:textSize="12sp"
+
+				android:includeFontPadding="false"
+				android:text="3. DEVICE 버튼 클릭 -> 내 타이머 선택"
+				app:fontFamily="@font/notosansblack" />
+			<com.google.android.material.button.MaterialButton
+				android:id="@+id/action_connect"
+				style="@style/Widget.Connect"
+				android:layout_width="wrap_content"
+				android:layout_height="40dp"
+				android:backgroundTint="@color/nordicFall"
+				android:includeFontPadding="false"
+				android:onClick="onConnectClicked"
+				android:text="DEVICE"
+				android:textSize="14sp"
+				app:fontFamily="@font/notosansblack"
+				tools:targetApi="lollipop" />
+
+			<!-- DFU section -->
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="3dp"
+				android:gravity="center"
+				android:textSize="12sp"
+
 				android:layout_marginBottom="@id/action_connect"
 				android:includeFontPadding="false"
 				android:text="4. DEVICE 버튼 클릭 -> 내 타이머 선택"
 				app:fontFamily="@font/notosansblack" />
-
 			<LinearLayout
 				android:id="@+id/dfu_pane"
 				style="@style/Widget.List"
@@ -273,23 +292,27 @@
 					style="@style/Widget.ListTitle"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
-					android:backgroundTint="@color/nordicFall"
+					android:backgroundTint="#FFA85B"
 					android:text="@string/dfu_section_dfu_header"
 					tools:targetApi="lollipop"
-					app:fontFamily="@font/notosansblack"
-					android:includeFontPadding="false"/>
+					app:fontFamily="@font/notosansmedium"
+					android:includeFontPadding="false"
+					android:textSize="12sp"
+					/>
 
 				<com.google.android.material.button.MaterialButton
 					android:id="@+id/action_upload"
 					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
+					android:layout_height="40dp"
 					android:layout_margin="@dimen/feature_section_padding"
 					android:enabled="false"
 					android:onClick="onUploadClicked"
 					android:text="@string/dfu_action_upload"
 					app:backgroundTint="#FF7900"
 					app:fontFamily="@font/notosansblack"
-					android:includeFontPadding="false"/>
+					android:includeFontPadding="false"
+					android:textSize="12sp"
+					/>
 
 				<androidx.appcompat.widget.AppCompatTextView
 					android:id="@+id/textviewUploading"
@@ -317,33 +340,12 @@
 					android:text="@string/dfu_uploading_percentage_label"
 					android:visibility="invisible" />
 			</LinearLayout>
-			<TextView
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:layout_marginTop="5dp"
-				android:gravity="center"
-				android:layout_marginBottom="@id/action_connect"
-				android:includeFontPadding="false"
-				android:text="3. DEVICE 버튼 클릭 -> 내 타이머 선택"
-				app:fontFamily="@font/notosansblack" />
 
-			<com.google.android.material.button.MaterialButton
-				android:id="@+id/action_connect"
-				style="@style/Widget.Connect"
-				android:layout_width="wrap_content"
-				android:layout_height="50dp"
-				android:layout_marginBottom="@dimen/activity_vertical_margin_bottom"
-				android:backgroundTint="@color/nordicFall"
-				android:includeFontPadding="false"
-				android:onClick="onConnectClicked"
-				android:text="DEVICE"
-				android:textSize="15sp"
-				app:fontFamily="@font/notosansblack"
-				tools:targetApi="lollipop" />
+
+
 
 
 		</LinearLayout>
 
 
-	</no.nordicsemi.android.nrftoolbox.widget.ForegroundRelativeLayout>
 </LinearLayout>
