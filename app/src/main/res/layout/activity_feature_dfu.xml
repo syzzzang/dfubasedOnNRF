@@ -26,324 +26,341 @@
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
 	android:orientation="vertical"
-	tools:context=".dfu.DfuActivity"
-	>
+	tools:context=".dfu.DfuActivity">
 
-
-	<no.nordicsemi.android.nrftoolbox.widget.ForegroundRelativeLayout
-		style="@style/HeaderShadow"
+	<LinearLayout
 		android:layout_width="match_parent"
-		android:layout_height="match_parent">
-
-		<!-- The size of text below must be fixed, therefore dp are used instead of sp -->
+		android:layout_height="match_parent"
 
 
-
+		android:gravity="center_horizontal"
+		android:orientation="vertical">
 		<androidx.appcompat.widget.AppCompatTextView
 			android:id="@+id/device_name"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:layout_centerHorizontal="true"
 			android:layout_marginTop="12dp"
 			android:ellipsize="end"
-			android:freezesText="true"
-			android:maxLines="1"
-			android:textSize="30sp"
+
+			android:textSize="25sp"
 			android:text="REMIT DFU"
+			android:layout_gravity="center"
 
 			app:fontFamily="@font/notosansmedium"
 			android:includeFontPadding="false"
 			android:textAllCaps="true"
 			android:textAppearance="?android:attr/textAppearanceLarge"/>
+		<View
+			android:background="@color/black"
+			android:layout_width="match_parent"
+			android:layout_height="1px"
+			android:layout_marginLeft="35dp"
+			android:layout_marginRight="35dp"
+			android:layout_marginTop="5dp"
 
+
+			>
+
+		</View>
+		<!-- Application section -->
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="5dp"
+			android:gravity="center"
+			app:fontFamily="@font/notosansblack"
+			android:includeFontPadding="false"
+			android:textSize="12sp"
+			android:text="1. DOWNLOAD 버튼 클릭">
+
+		</TextView>
+		<Button
+			android:id="@+id/edtRaw"
+			android:layout_width="wrap_content"
+			android:layout_height="40dp"
+			android:backgroundTint="@color/nordicFall"
+			android:text="DOWNLOAD"
+			tools:targetApi="lollipop"
+			app:fontFamily="@font/notosansblack"
+			android:includeFontPadding="false"
+			android:textSize="12sp"
+
+			>
+
+		</Button>
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="5dp"
+			android:gravity="center"
+			android:includeFontPadding="false"
+			android:textSize="12sp"
+			android:text="2. SELECT FILE 버튼 클릭 \n-> 'Distribution packet(ZIP)' 선택 OK \n-> 다운로드 폴더에서 'fw_v111.zip' 선택\n-> 'All' 선택 OK"
+			app:fontFamily="@font/notosansblack">
+
+		</TextView>
 
 		<LinearLayout
+			style="@style/Widget.List"
 			android:layout_width="match_parent"
-			android:layout_height="match_parent"
-			android:layout_alignParentStart="true"
-			android:layout_alignParentTop="true"
-			android:layout_marginStart="-2dp"
-			android:layout_marginTop="-1dp"
-			android:gravity="center_horizontal"
+			android:layout_height="wrap_content"
+			android:layout_marginLeft="@dimen/feature_horizontal_margin"
+			android:layout_marginTop="5dp"
+			android:layout_marginRight="@dimen/feature_horizontal_margin"
+			android:backgroundTint="#FBEEE3"
+
 			android:orientation="vertical">
 
-			<!-- Application section -->
-			<TextView
-				android:layout_width="wrap_content"
+			<androidx.appcompat.widget.AppCompatTextView
+				style="@style/Widget.ListTitle"
+				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:layout_marginTop="70dp"
-				android:gravity="center"
-				app:fontFamily="@font/notosansblack"
-				android:includeFontPadding="false"
-				android:text="1. DOWNLOAD 버튼 클릭">
-
-			</TextView>
-
-			<Button
-				android:id="@+id/edtRaw"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:backgroundTint="@color/nordicFall"
- 				android:text="DOWNLOAD"
+				android:backgroundTint="#FFA85B"
+				android:text="@string/dfu_section_application_header"
 				tools:targetApi="lollipop"
-				app:fontFamily="@font/notosansblack"
+				app:fontFamily="@font/notosansmedium"
 				android:includeFontPadding="false"
-				>
+				android:textSize="12sp"
+				/>
 
-			</Button>
-
-
-			<TextView
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:layout_marginTop="8dp"
-				android:gravity="center"
-				android:includeFontPadding="false"
-				android:text="2. SELECT FILE 버튼 클릭 \n-> 'Distribution packet(ZIP)' 선택 OK \n-> 'fw_v111.zip' 선택 -> 'All' 선택 OK"
-				app:fontFamily="@font/notosansblack">
-
-			</TextView>
-
-			<LinearLayout
-				style="@style/Widget.List"
+			<TableLayout
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:layout_marginLeft="@dimen/feature_horizontal_margin"
-				android:layout_marginTop="10dp"
-				android:layout_marginRight="@dimen/feature_horizontal_margin"
-				android:orientation="vertical">
+				android:padding="@dimen/feature_section_padding">
 
-				<androidx.appcompat.widget.AppCompatTextView
-					style="@style/Widget.ListTitle"
+				<TableRow
 					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:backgroundTint="#FFA85B"
-					android:text="@string/dfu_section_application_header"
-					tools:targetApi="lollipop"
-					app:fontFamily="@font/notosansblack"
-					android:includeFontPadding="false"/>
+					android:layout_height="wrap_content">
 
-				<TableLayout
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:padding="@dimen/feature_section_padding">
-
-					<TableRow
-						android:layout_width="match_parent"
-						android:layout_height="wrap_content">
-
-						<androidx.appcompat.widget.AppCompatTextView
-							android:layout_width="wrap_content"
-							android:layout_height="wrap_content"
-							android:text="@string/dfu_file_name_label" />
-
-						<androidx.appcompat.widget.AppCompatTextView
-							android:id="@+id/file_name"
-							android:layout_width="0dp"
-							android:layout_height="wrap_content"
-							android:layout_marginLeft="5dp"
-							android:layout_weight="1"
-							android:ellipsize="middle"
-							android:freezesText="true"
-							android:singleLine="true" />
-					</TableRow>
-
-					<TableRow
-						android:layout_width="match_parent"
-						android:layout_height="wrap_content">
-
-						<androidx.appcompat.widget.AppCompatTextView
-							android:layout_width="wrap_content"
-							android:layout_height="wrap_content"
-							android:text="@string/dfu_file_type_label" />
-
-						<androidx.appcompat.widget.AppCompatTextView
-							android:id="@+id/file_type"
-							android:layout_width="wrap_content"
-							android:layout_height="wrap_content"
-							android:layout_marginLeft="5dp"
-							android:freezesText="true" />
-					</TableRow>
-
-					<TableRow
-						android:layout_width="match_parent"
-						android:layout_height="wrap_content">
-
-						<androidx.appcompat.widget.AppCompatTextView
-							android:layout_width="wrap_content"
-							android:layout_height="wrap_content"
-							android:text="@string/dfu_file_scope_label" />
-
-						<androidx.appcompat.widget.AppCompatTextView
-							android:id="@+id/file_scope"
-							android:layout_width="wrap_content"
-							android:layout_height="wrap_content"
-							android:layout_marginLeft="5dp"
-							android:freezesText="true" />
-					</TableRow>
-
-					<TableRow
-						android:layout_width="match_parent"
-						android:layout_height="wrap_content">
-
-						<androidx.appcompat.widget.AppCompatTextView
-							android:layout_width="wrap_content"
-							android:layout_height="wrap_content"
-							android:text="@string/dfu_file_size_label" />
-
-						<androidx.appcompat.widget.AppCompatTextView
-							android:id="@+id/file_size"
-							android:layout_width="wrap_content"
-							android:layout_height="wrap_content"
-							android:layout_marginLeft="5dp"
-							android:freezesText="true" />
-					</TableRow>
-
-					<TableRow
-						android:layout_width="match_parent"
-						android:layout_height="wrap_content">
-
-						<androidx.appcompat.widget.AppCompatTextView
-							android:layout_width="wrap_content"
-							android:layout_height="wrap_content"
-							android:text="@string/dfu_file_status_label" />
-
-						<androidx.appcompat.widget.AppCompatTextView
-							android:id="@+id/file_status"
-							android:layout_width="wrap_content"
-							android:layout_height="wrap_content"
-							android:layout_marginLeft="5dp"
-							android:freezesText="true"
-							android:text="@string/dfu_file_status_no_file" />
-					</TableRow>
-				</TableLayout>
-
-				<LinearLayout
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:layout_marginTop="4dp"
-					android:layout_marginBottom="@dimen/feature_section_padding"
-					android:gravity="center_vertical"
-					android:orientation="horizontal"
-					android:paddingLeft="42dp">
-
-					<com.google.android.material.button.MaterialButton
-						android:id="@+id/action_select_file"
+					<androidx.appcompat.widget.AppCompatTextView
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
-						android:backgroundTint="@color/nordicFall"
-						android:onClick="onSelectFileClicked"
-						android:text="@string/dfu_action_select_file"
-						tools:targetApi="lollipop"
-						app:fontFamily="@font/notosansblack"
-						android:includeFontPadding="false"/>
+						android:text="@string/dfu_file_name_label" />
 
-					<ImageView
+					<androidx.appcompat.widget.AppCompatTextView
+						android:id="@+id/file_name"
+						android:layout_width="0dp"
+						android:layout_height="wrap_content"
+						android:layout_marginLeft="5dp"
+						android:layout_weight="1"
+						android:ellipsize="middle"
+						android:freezesText="true"
+						android:singleLine="true" />
+				</TableRow>
+
+				<TableRow
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content">
+
+					<androidx.appcompat.widget.AppCompatTextView
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
-						android:layout_marginLeft="10dp"
-						android:onClick="onSelectFileHelpClicked"
-						android:src="@drawable/ic_help" />
-				</LinearLayout>
-			</LinearLayout>
+						android:text="@string/dfu_file_type_label" />
 
-			<!-- DFU section -->
-			<TextView
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:layout_marginTop="8dp"
-				android:gravity="center"
-				android:layout_marginBottom="@id/action_connect"
-				android:includeFontPadding="false"
-				android:text="4. DEVICE 버튼 클릭 -> 내 타이머 선택"
-				app:fontFamily="@font/notosansblack" />
+					<androidx.appcompat.widget.AppCompatTextView
+						android:id="@+id/file_type"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginLeft="5dp"
+						android:freezesText="true" />
+				</TableRow>
+
+				<TableRow
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content">
+
+					<androidx.appcompat.widget.AppCompatTextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="@string/dfu_file_scope_label" />
+
+					<androidx.appcompat.widget.AppCompatTextView
+						android:id="@+id/file_scope"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginLeft="5dp"
+						android:freezesText="true" />
+				</TableRow>
+
+				<TableRow
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content">
+
+					<androidx.appcompat.widget.AppCompatTextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="@string/dfu_file_size_label" />
+
+					<androidx.appcompat.widget.AppCompatTextView
+						android:id="@+id/file_size"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginLeft="5dp"
+						android:freezesText="true" />
+				</TableRow>
+
+				<TableRow
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content">
+
+					<androidx.appcompat.widget.AppCompatTextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="@string/dfu_file_status_label" />
+
+					<androidx.appcompat.widget.AppCompatTextView
+						android:id="@+id/file_status"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginLeft="5dp"
+						android:freezesText="true"
+						android:text="@string/dfu_file_status_no_file" />
+				</TableRow>
+			</TableLayout>
 
 			<LinearLayout
-				android:id="@+id/dfu_pane"
-				style="@style/Widget.List"
-				android:layout_width="match_parent"
+				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:layout_marginLeft="@dimen/feature_horizontal_margin"
-				android:layout_marginTop="5dp"
-				android:layout_marginRight="@dimen/feature_horizontal_margin"
-				android:layout_marginBottom="8dp"
-				android:orientation="vertical">
-
-				<androidx.appcompat.widget.AppCompatTextView
-					style="@style/Widget.ListTitle"
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:backgroundTint="@color/nordicFall"
-					android:text="@string/dfu_section_dfu_header"
-					tools:targetApi="lollipop"
-					app:fontFamily="@font/notosansblack"
-					android:includeFontPadding="false"/>
+				android:layout_marginTop="4dp"
+				android:layout_marginBottom="@dimen/feature_section_padding"
+				android:gravity="center_vertical"
+				android:orientation="horizontal"
+				android:paddingLeft="42dp">
 
 				<com.google.android.material.button.MaterialButton
-					android:id="@+id/action_upload"
+					android:id="@+id/action_select_file"
 					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:layout_margin="@dimen/feature_section_padding"
-					android:enabled="false"
-					android:onClick="onUploadClicked"
-					android:text="@string/dfu_action_upload"
-					app:backgroundTint="#FF7900"
+					android:layout_height="40dp"
+					android:backgroundTint="@color/nordicFall"
+					android:onClick="onSelectFileClicked"
+					android:text="@string/dfu_action_select_file"
+					tools:targetApi="lollipop"
 					app:fontFamily="@font/notosansblack"
-					android:includeFontPadding="false"/>
+					android:includeFontPadding="false"
+					android:textSize="12sp"
+					/>
 
-				<androidx.appcompat.widget.AppCompatTextView
-					android:id="@+id/textviewUploading"
+				<ImageView
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:layout_margin="@dimen/feature_section_padding"
-					android:freezesText="true"
-					android:text="@string/dfu_status_uploading"
-					android:visibility="invisible" />
-
-				<ProgressBar
-					android:id="@+id/progressbar_file"
-					style="@android:style/Widget.Holo.ProgressBar.Horizontal"
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:max="100"
-					android:visibility="invisible" />
-
-				<androidx.appcompat.widget.AppCompatTextView
-					android:id="@+id/textviewProgress"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:layout_margin="@dimen/feature_section_padding"
-					android:freezesText="true"
-					android:text="@string/dfu_uploading_percentage_label"
-					android:visibility="invisible" />
+					android:layout_marginLeft="10dp"
+					android:onClick="onSelectFileHelpClicked"
+					android:src="@drawable/ic_help" />
 			</LinearLayout>
+		</LinearLayout>
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="15dp"
+			android:gravity="center"
+			android:textSize="12sp"
+
+			android:includeFontPadding="false"
+			android:text="3. DEVICE 버튼 클릭 -> 내 타이머 선택"
+			app:fontFamily="@font/notosansblack" />
+		<com.google.android.material.button.MaterialButton
+			android:id="@+id/action_connect"
+			style="@style/Widget.Connect"
+			android:layout_width="wrap_content"
+			android:layout_height="40dp"
+			android:backgroundTint="@color/nordicFall"
+			android:includeFontPadding="false"
+			android:onClick="onConnectClicked"
+			android:text="DEVICE"
+			android:textSize="14sp"
+			app:fontFamily="@font/notosansblack"
+			tools:targetApi="lollipop" />
+
+		<!-- DFU section -->
+		<LinearLayout
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+
+			android:orientation="vertical">
 			<TextView
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:layout_marginTop="5dp"
 				android:gravity="center"
-				android:layout_marginBottom="@id/action_connect"
+				android:layout_marginTop="10dp"
+
 				android:includeFontPadding="false"
-				android:text="3. DEVICE 버튼 클릭 -> 내 타이머 선택"
+				android:text="4. UPLOAD 버튼 클릭"
+				android:textSize="12sp"
 				app:fontFamily="@font/notosansblack" />
+		</LinearLayout>
+
+		<LinearLayout
+			android:id="@+id/dfu_pane"
+			style="@style/Widget.List"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginLeft="@dimen/feature_horizontal_margin"
+			android:layout_marginTop="5dp"
+			android:layout_marginRight="@dimen/feature_horizontal_margin"
+			android:layout_marginBottom="8dp"
+			android:backgroundTint="#FBEEE3"
+
+			android:orientation="vertical">
+
+			<androidx.appcompat.widget.AppCompatTextView
+				style="@style/Widget.ListTitle"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:backgroundTint="#FFA85B"
+				android:text="@string/dfu_section_dfu_header"
+				tools:targetApi="lollipop"
+				app:fontFamily="@font/notosansmedium"
+				android:includeFontPadding="false"
+				android:textSize="12sp"
+				/>
 
 			<com.google.android.material.button.MaterialButton
-				android:id="@+id/action_connect"
-				style="@style/Widget.Connect"
+				android:id="@+id/action_upload"
 				android:layout_width="wrap_content"
-				android:layout_height="50dp"
-				android:layout_marginBottom="@dimen/activity_vertical_margin_bottom"
-				android:backgroundTint="@color/nordicFall"
-				android:includeFontPadding="false"
-				android:onClick="onConnectClicked"
-				android:text="DEVICE"
-				android:textSize="15sp"
+				android:layout_height="40dp"
+				android:layout_margin="@dimen/feature_section_padding"
+				android:enabled="false"
+				android:onClick="onUploadClicked"
+				android:text="@string/dfu_action_upload"
+				app:backgroundTint="#FF7900"
 				app:fontFamily="@font/notosansblack"
-				tools:targetApi="lollipop" />
+				android:includeFontPadding="false"
+				android:textSize="12sp"
+				/>
 
+			<androidx.appcompat.widget.AppCompatTextView
+				android:id="@+id/textviewUploading"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_margin="@dimen/feature_section_padding"
+				android:freezesText="true"
+				android:text="@string/dfu_status_uploading"
+				android:visibility="invisible" />
 
+			<ProgressBar
+				android:id="@+id/progressbar_file"
+				style="@android:style/Widget.Holo.ProgressBar.Horizontal"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:max="100"
+				android:visibility="invisible" />
+
+			<androidx.appcompat.widget.AppCompatTextView
+				android:id="@+id/textviewProgress"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_margin="@dimen/feature_section_padding"
+				android:freezesText="true"
+				android:text="@string/dfu_uploading_percentage_label"
+				android:visibility="invisible" />
 		</LinearLayout>
 
 
-	</no.nordicsemi.android.nrftoolbox.widget.ForegroundRelativeLayout>
+
+
+
+	</LinearLayout>
+
+
 </LinearLayout>

@@ -28,26 +28,6 @@
 	android:orientation="vertical"
 	tools:context=".dfu.DfuActivity">
 
-
-
-
-
-		<androidx.appcompat.widget.AppCompatTextView
-			android:id="@+id/device_name"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
- 			android:layout_marginTop="12dp"
-			android:ellipsize="end"
-
-			android:textSize="20sp"
-			android:text="REMIT DFU"
-			android:layout_gravity="center"
-
-			app:fontFamily="@font/notosansmedium"
-			android:includeFontPadding="false"
-			android:textAllCaps="true"
-			android:textAppearance="?android:attr/textAppearanceLarge"/>
-
 		<LinearLayout
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
@@ -55,7 +35,33 @@
 
 			android:gravity="center_horizontal"
 			android:orientation="vertical">
+			<androidx.appcompat.widget.AppCompatTextView
+				android:id="@+id/device_name"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="12dp"
+				android:ellipsize="end"
 
+				android:textSize="25sp"
+				android:text="REMIT DFU"
+				android:layout_gravity="center"
+
+				app:fontFamily="@font/notosansmedium"
+				android:includeFontPadding="false"
+				android:textAllCaps="true"
+				android:textAppearance="?android:attr/textAppearanceLarge"/>
+			<View
+				android:background="@color/black"
+				android:layout_width="match_parent"
+				android:layout_height="1px"
+				android:layout_marginLeft="35dp"
+				android:layout_marginRight="35dp"
+				android:layout_marginTop="5dp"
+
+
+				>
+
+			</View>
 			<!-- Application section -->
 			<TextView
 				android:layout_width="wrap_content"
@@ -85,11 +91,11 @@
 			<TextView
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:layout_marginTop="8dp"
+				android:layout_marginTop="5dp"
 				android:gravity="center"
 				android:includeFontPadding="false"
 				android:textSize="12sp"
-				android:text="2. SELECT FILE 버튼 클릭 \n-> 'Distribution packet(ZIP)' 선택 OK \n-> 'fw_v111.zip' 선택 -> 'All' 선택 OK"
+				android:text="2. SELECT FILE 버튼 클릭 \n-> 'Distribution packet(ZIP)' 선택 OK \n-> 다운로드 폴더에서 'fw_v111.zip' 선택\n-> 'All' 선택 OK"
 				app:fontFamily="@font/notosansblack">
 
 			</TextView>
@@ -99,8 +105,10 @@
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:layout_marginLeft="@dimen/feature_horizontal_margin"
-				android:layout_marginTop="10dp"
+				android:layout_marginTop="5dp"
 				android:layout_marginRight="@dimen/feature_horizontal_margin"
+				android:backgroundTint="#FBEEE3"
+
 				android:orientation="vertical">
 
 				<androidx.appcompat.widget.AppCompatTextView
@@ -244,7 +252,7 @@
 			<TextView
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:layout_marginTop="5dp"
+				android:layout_marginTop="15dp"
 				android:gravity="center"
 				android:textSize="12sp"
 
@@ -265,18 +273,23 @@
 				tools:targetApi="lollipop" />
 
 			<!-- DFU section -->
+			<LinearLayout
+ 				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
 
+ 				android:orientation="vertical">
 			<TextView
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:layout_marginTop="3dp"
-				android:gravity="center"
-				android:textSize="12sp"
+  				android:gravity="center"
+				android:layout_marginTop="10dp"
 
-				android:layout_marginBottom="@id/action_connect"
 				android:includeFontPadding="false"
-				android:text="4. DEVICE 버튼 클릭 -> 내 타이머 선택"
+				android:text="4. UPLOAD 버튼 클릭"
+				android:textSize="12sp"
 				app:fontFamily="@font/notosansblack" />
+			</LinearLayout>
+
 			<LinearLayout
 				android:id="@+id/dfu_pane"
 				style="@style/Widget.List"
@@ -286,6 +299,8 @@
 				android:layout_marginTop="5dp"
 				android:layout_marginRight="@dimen/feature_horizontal_margin"
 				android:layout_marginBottom="8dp"
+				android:backgroundTint="#FBEEE3"
+
 				android:orientation="vertical">
 
 				<androidx.appcompat.widget.AppCompatTextView
