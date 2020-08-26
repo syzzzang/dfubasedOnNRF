@@ -22,7 +22,7 @@
   -->
 <resources>
 
-	<string name="app_name">nRF Toolbox</string>
+	<string name="app_name">REMIT DFU</string>
 
 	<string name="shortcut_dfu_short">DFU</string>
 	<string name="shortcut_dfu_long">Device Firmware Update</string>
