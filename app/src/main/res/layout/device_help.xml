@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
+
+
+
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_height="wrap_content"
+            android:layout_width="280dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text=" 1.  제품이 꺼진 상태에서 전원버튼을 10초간 눌러서 DFU모드로 만들어 줍니다."
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/notosansmedium"
+            android:includeFontPadding="false"/>
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_height="wrap_content"
+            android:layout_width="280dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="2.DEVICE 버튼을 눌러 'DfuSmartWatch' 제품을 선택합니다."
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/notosansmedium"
+            android:includeFontPadding="false"/>
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_height="wrap_content"
+            android:layout_width="280dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="※ 주의 \nSmartClock이라고 되어있는 상태의 블루투스를 선택하면 안됩니다!!\n제품 전원종료 후 다시 10초간 눌러주세요.\n10초는 생각보다 긴 시간입니다."
+            android:layout_marginTop="20dp"
+            android:textColor="@color/nordicRed"
+            android:fontFamily="@font/notosansmedium"
+            />
+        <ImageView
+            android:layout_width="350dp"
+            android:layout_height="350dp"
+            android:layout_marginTop="20dp"
+            app:srcCompat="@drawable/device" />
+
+
+
+    </LinearLayout>
+</ScrollView>

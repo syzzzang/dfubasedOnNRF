@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
+
+
+
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_height="wrap_content"
+            android:layout_width="280dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="경고!\n업로드 중에 제품이 꺼지거나 어플이 꺼지지 않도록 주의해주세요.\n제품에 치명적인 버그가 발생할 수 있습니다."
+            android:textColor="@color/nordicRed"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/notosansmedium"
+           />
+
+
+
+
+    </LinearLayout>
+</ScrollView>

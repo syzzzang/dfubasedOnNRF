@@ -5,7 +5,7 @@ android {
     buildToolsVersion "29.0.3"
 
     defaultConfig {
-        applicationId "no.remit.android.nrftoolbox"
+        applicationId "com.remit.android.remitdfu"
         minSdkVersion 18
         targetSdkVersion 29
         versionCode 78

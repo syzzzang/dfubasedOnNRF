@@ -26,13 +26,13 @@
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
 	android:orientation="vertical"
-	tools:context="no.remit.android.nrftoolbox.dfu.DfuActivity">
+	tools:context="com.remit.android.remitdfu.dfu.DfuActivity">
 
 	<include
 		android:id="@+id/toolbar_actionbar"
 		layout="@layout/toolbar"/>
 
-	<no.remit.android.nrftoolbox.widget.ForegroundRelativeLayout
+	<com.remit.android.remitdfu.widget.ForegroundRelativeLayout
 		style="@style/HeaderShadow"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent">
@@ -282,5 +282,5 @@
 			android:onClick="onConnectClicked"
 			android:text="@string/action_select"/>
 
-	</no.remit.android.nrftoolbox.widget.ForegroundRelativeLayout>
+	</com.remit.android.remitdfu.widget.ForegroundRelativeLayout>
 </LinearLayout>

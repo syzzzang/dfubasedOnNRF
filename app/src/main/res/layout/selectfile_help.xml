@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp">
+
+
+
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_height="wrap_content"
+        android:layout_width="280dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="1. Distribution packet(ZIP)을 선택한 후 OK를 클릭합니다."
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/notosansmedium"
+        android:includeFontPadding="false"/>
+
+    <ImageView
+        android:layout_width="350dp"
+        android:layout_height="350dp"
+        android:layout_marginTop="20dp"
+        app:srcCompat="@drawable/selectfile1" />
+
+
+    <TextView
+        android:layout_width="280dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_height="wrap_content"
+        android:text="2. 'Download' 폴더에서 다운로드한 FW_파일.zip을 선택합니다."
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/notosansmedium"
+        android:includeFontPadding="false"/>
+
+    <ImageView
+        android:layout_width="320dp"
+        android:layout_height="200dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_marginTop="20dp"
+        app:srcCompat="@drawable/selectfile2" />
+
+
+     <TextView
+        android:layout_width="280dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_height="wrap_content"
+        android:text="3. All을 선택한 후 OK를 클릭합니다."
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/notosansmedium"
+        android:includeFontPadding="false"/>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="350dp"
+        android:layout_height="350dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_marginTop="20dp"
+        app:srcCompat="@drawable/selectfile3" />
+</LinearLayout>
+</ScrollView>

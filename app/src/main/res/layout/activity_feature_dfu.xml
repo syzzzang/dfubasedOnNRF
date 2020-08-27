@@ -26,7 +26,7 @@
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
 	android:orientation="vertical"
-	tools:context="no.remit.android.nrftoolbox.dfu.DfuActivity">
+	tools:context="com.remit.android.remitdfu.dfu.DfuActivity">
 
 	<LinearLayout
 		android:layout_width="match_parent"
@@ -94,7 +94,7 @@
 			android:gravity="center"
 			android:includeFontPadding="false"
 			android:textSize="12sp"
-			android:text="2. SELECT FILE 버튼 클릭 \n-> 'Distribution packet(ZIP)' 선택 OK \n-> 다운로드 폴더에서 'fw_v112.zip' 선택\n-> 'All' 선택 OK"
+			android:text="2. SELECT FILE 버튼 클릭"
 			app:fontFamily="@font/notosansblack">
 
 		</TextView>
@@ -258,6 +258,12 @@
 			android:includeFontPadding="false"
 			android:text="3. DEVICE 버튼 클릭 -> 내 타이머 선택"
 			app:fontFamily="@font/notosansblack" />
+		<LinearLayout
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			android:paddingStart="40dp">
+
 		<com.google.android.material.button.MaterialButton
 			android:id="@+id/action_connect"
 			style="@style/Widget.Connect"
@@ -270,6 +276,14 @@
 			android:textSize="14sp"
 			app:fontFamily="@font/notosansblack"
 			tools:targetApi="lollipop" />
+		<ImageView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginLeft="10dp"
+			android:layout_gravity="center_vertical"
+			android:onClick="onDeviceHelpClicked"
+			android:src="@drawable/ic_help" />
+		</LinearLayout>
 
 		<!-- DFU section -->
 		<LinearLayout
@@ -313,6 +327,11 @@
 				android:includeFontPadding="false"
 				android:textSize="12sp"
 				/>
+			<LinearLayout
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:orientation="horizontal"
+				android:paddingStart="30dp">
 
 			<com.google.android.material.button.MaterialButton
 				android:id="@+id/action_upload"
@@ -327,6 +346,13 @@
 				android:includeFontPadding="false"
 				android:textSize="12sp"
 				/>
+			<ImageView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_gravity="center_vertical"
+				android:onClick="onUploadHelpClicked"
+				android:src="@drawable/ic_help" />
+			</LinearLayout>
 
 			<androidx.appcompat.widget.AppCompatTextView
 				android:id="@+id/textviewUploading"

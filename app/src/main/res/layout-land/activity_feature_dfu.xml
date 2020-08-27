@@ -26,13 +26,13 @@
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
 	android:orientation="vertical"
-	tools:context="no.remit.android.nrftoolbox.dfu.DfuActivity">
+	tools:context="com.remit.android.remitdfu.dfu.DfuActivity">
 
 	<include
 		android:id="@+id/toolbar_actionbar"
 		layout="@layout/toolbar"/>
 
-	<no.remit.android.nrftoolbox.widget.ForegroundRelativeLayout
+	<com.remit.android.remitdfu.widget.ForegroundRelativeLayout
 		style="@style/HeaderShadow"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent">
@@ -43,11 +43,11 @@
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_centerVertical="true"
-			android:layout_marginLeft="@dimen/dfu_feature_title_long_margin"
+			android:layout_marginStart="@dimen/dfu_feature_title_long_margin"
 			android:rotation="270"
 			android:text="@string/dfu_feature_title_long"
 			android:textColor="@color/verticalTitleColor"
-			android:textSize="32dp"
+			android:textSize="32sp"
 			android:textStyle="bold"/>
 
 		<androidx.appcompat.widget.AppCompatTextView
@@ -206,9 +206,10 @@
 					<ImageView
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
-						android:layout_marginLeft="10dp"
+						android:layout_marginStart="10dp"
 						android:onClick="onSelectFileHelpClicked"
-						android:src="@drawable/ic_help"/>
+						android:src="@drawable/ic_help"
+						android:contentDescription="@string/todo" />
 				</LinearLayout>
 			</LinearLayout>
 
@@ -220,8 +221,8 @@
 				android:layout_width="0dp"
 				android:layout_height="176dp"
 				android:layout_marginBottom="8dp"
-				android:layout_marginLeft="14dp"
-				android:layout_marginRight="4dp"
+				android:layout_marginStart="14dp"
+				android:layout_marginEnd="4dp"
 				android:layout_marginTop="@dimen/feature_vertical_margin_top"
 				android:layout_weight="1"
 				android:orientation="vertical">
@@ -273,10 +274,10 @@
 		<TextView
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:layout_alignRight="@+id/dfu_container"
+			android:layout_alignEnd="@+id/dfu_container"
 			android:layout_below="@+id/dfu_container"
 			android:text="@string/dfu_lib_version"
-			android:textSize="12dp"/>
+			android:textSize="12sp"/>
 
 		<com.google.android.material.button.MaterialButton
 			android:id="@+id/action_connect"
@@ -289,5 +290,5 @@
 			android:onClick="onConnectClicked"
 			android:text="@string/action_select"/>
 
-	</no.remit.android.nrftoolbox.widget.ForegroundRelativeLayout>
+	</com.remit.android.remitdfu.widget.ForegroundRelativeLayout>
 </LinearLayout>
