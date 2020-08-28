@@ -257,6 +257,21 @@ public class DfuActivity extends AppCompatActivity implements LoaderCallbacks<Cu
 			showBLEDialog();
 		}
 
+
+		////시작하기 전 팝업창
+
+
+		LayoutInflater filehelp=LayoutInflater.from(this);
+		final View selectfileview = filehelp.inflate(R.layout.help, null);
+
+		new AlertDialog.Builder(this)
+				.setView(selectfileview)
+				.setTitle("REMIT DFU")
+				.setPositiveButton(R.string.ok, null)
+				.show();
+
+		//////
+
 		setGUI();
 		Button edtraw=findViewById(R.id.edtRaw);
 
