@@ -22,12 +22,22 @@
             android:layout_width="wrap_content"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            android:text="  REMIT-DFU는 레밋에서 만든 스마트 타이머의 버전을 업그레이트 하기 위한 앱입니다. 이 어플리케이션에서 4단계로 이루어진 절차에 따라서 진행하시면 제품이 업그레이드 됩니다.\n\n\n  시작하기 전에 꼭 각 버튼 옆에 있는 '?'버튼을 눌러 주의사항과 방법을 확인해주시기 바랍니다."
+            android:text="  REMIT-DFU는 레밋에서 만든 스마트 타이머의 버전을 업그레이트 하기 위한 앱입니다.\n  이 어플리케이션에서 4단계로 이루어진 절차에 따라서 진행하시면 제품이 업그레이드 됩니다."
             android:layout_marginTop="20dp"
             android:fontFamily="@font/notosansmedium"
             />
 
-
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="  시작하기 전에 꼭 각 버튼 옆에 있는 '?'버튼을 눌러 주의사항과 방법을 확인해주시기 바랍니다."
+            android:textColor="@color/nordicRed"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/notosansmedium"
+            />
 
 
     </LinearLayout>
