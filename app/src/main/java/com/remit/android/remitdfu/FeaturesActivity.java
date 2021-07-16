@@ -152,6 +152,7 @@ public class FeaturesActivity extends AppCompatActivity {
 		Log.d("Folder", "Created ? " + isDirectoryCreated);
 		return dir;
 	}
+
 	private void downloadFileFromRawFolder() {
 		try {
 			InputStream in = getResources().openRawResource(
