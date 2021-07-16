@@ -243,6 +243,8 @@ public class DfuActivity extends AppCompatActivity implements LoaderCallbacks<Cu
 		}
 	};
 
+
+
 	private Resources resources;
 	private String output;
 	private static final int MY_PERMISSION_RQUEST_STORAGE=1;
@@ -257,6 +259,8 @@ public class DfuActivity extends AppCompatActivity implements LoaderCallbacks<Cu
 
 
 		////시작하기 전 팝업창
+
+
 		LayoutInflater filehelp=LayoutInflater.from(this);
 		final View selectfileview = filehelp.inflate(R.layout.help, null);
 
@@ -267,6 +271,7 @@ public class DfuActivity extends AppCompatActivity implements LoaderCallbacks<Cu
 				.show();
 
 		//////
+
 		setGUI();
 		Button edtraw=findViewById(R.id.edtRaw);
 
@@ -286,6 +291,9 @@ public class DfuActivity extends AppCompatActivity implements LoaderCallbacks<Cu
 		edtraw.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
+//				Uri uri = Uri.parse("https://drive.google.com/drive/folders/1g-m_6VM7nYQkdJwbt3QOjVi7EpHf171U"); // missing 'http://' will cause crashed
+//				Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+//				startActivity(intent);
 				copyAsset("FW_v203.zip");
 			}
 		});
@@ -330,19 +338,21 @@ public class DfuActivity extends AppCompatActivity implements LoaderCallbacks<Cu
 	private void copyAsset(String filename){
 
 		//String dirPath=Environment.getExternalStorageDirectory().getAbsolutePath()+"/MyFiles";
-		String dirPath = Environment.getExternalStorageDirectory().getAbsolutePath()+"/"+Environment.DIRECTORY_DOWNLOADS;
-		File dir = new File(dirPath);
+		String dirPath=Environment.getExternalStorageDirectory().getAbsolutePath()+"/"+Environment.DIRECTORY_DOWNLOADS;
+		Log.d("dirpath",dirPath);
+		File dir=new File(dirPath);
 		if(!dir.exists()){
 			dir.mkdirs();
 		}
-		AssetManager assetManager = getAssets();
-		InputStream in = null;
-		OutputStream out = null;
+		AssetManager assetManager=getAssets();
+		InputStream in=null;
+		OutputStream out=null;
 
 		try{
-			in = assetManager.open(filename);
-			File outFile = new File(dirPath, filename);
-			out = new FileOutputStream(outFile);
+
+			in=assetManager.open(filename);
+			File outFile=new File(dirPath, filename);
+			out=new FileOutputStream(outFile);
 			copyFile(in,out);
 			Toast.makeText(this,"Saved!",Toast.LENGTH_SHORT).show();
 		}  catch (IOException e) {
@@ -364,6 +374,7 @@ public class DfuActivity extends AppCompatActivity implements LoaderCallbacks<Cu
 				}
 			}
 		}
+
 	}
 	private void copyFile(InputStream in, OutputStream out) throws IOException{
 		byte[] buffer=new byte[1024];
