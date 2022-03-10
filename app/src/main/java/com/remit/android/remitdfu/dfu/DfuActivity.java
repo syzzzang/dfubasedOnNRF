@@ -294,7 +294,7 @@ public class DfuActivity extends AppCompatActivity implements LoaderCallbacks<Cu
 //				Uri uri = Uri.parse("https://drive.google.com/drive/folders/1g-m_6VM7nYQkdJwbt3QOjVi7EpHf171U"); // missing 'http://' will cause crashed
 //				Intent intent = new Intent(Intent.ACTION_VIEW, uri);
 //				startActivity(intent);
-				copyAsset("FW_v203.zip");
+				copyAsset("FW_v310.zip");
 			}
 		});
 
