@@ -22,6 +22,7 @@
 package com.remit.android.remitdfu.dfu;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningServiceInfo;
 import android.app.LoaderManager.LoaderCallbacks;
@@ -81,6 +82,7 @@ import no.nordicsemi.android.dfu.DfuProgressListener;
 import no.nordicsemi.android.dfu.DfuProgressListenerAdapter;
 import no.nordicsemi.android.dfu.DfuServiceInitiator;
 import no.nordicsemi.android.dfu.DfuServiceListenerHelper;
+
 import com.remit.android.remitdfu.R;
 
 /**
@@ -89,7 +91,7 @@ import com.remit.android.remitdfu.R;
  * landscape orientations
  */
 public class DfuActivity extends AppCompatActivity implements LoaderCallbacks<Cursor>, ScannerFragment.OnDeviceSelectedListener,
-        UploadCancelFragment.CancelFragmentListener {
+		UploadCancelFragment.CancelFragmentListener {
 	private static final String TAG = "DfuActivity";
 
 	private static final String PREFS_DEVICE_NAME = "no.nordicsemi.android.nrftoolbox.dfu.PREFS_DEVICE_NAME";
@@ -243,11 +245,10 @@ public class DfuActivity extends AppCompatActivity implements LoaderCallbacks<Cu
 		}
 	};
 
-
-
 	private Resources resources;
 	private String output;
-	private static final int MY_PERMISSION_RQUEST_STORAGE=1;
+	private static final int MY_PERMISSION_RQUEST_STORAGE = 1;
+
 	@Override
 	protected void onCreate(final Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -257,11 +258,8 @@ public class DfuActivity extends AppCompatActivity implements LoaderCallbacks<Cu
 			showBLEDialog();
 		}
 
-
 		////시작하기 전 팝업창
-
-
-		LayoutInflater filehelp=LayoutInflater.from(this);
+		LayoutInflater filehelp = LayoutInflater.from(this);
 		final View selectfileview = filehelp.inflate(R.layout.help, null);
 
 		new AlertDialog.Builder(this)
@@ -270,22 +268,20 @@ public class DfuActivity extends AppCompatActivity implements LoaderCallbacks<Cu
 				.setPositiveButton(R.string.ok, null)
 				.show();
 
-		//////
-
 		setGUI();
-		Button edtraw=findViewById(R.id.edtRaw);
+		Button edtraw = findViewById(R.id.edtRaw);
 
-		if(ContextCompat.checkSelfPermission(DfuActivity.this,
-				Manifest.permission.WRITE_EXTERNAL_STORAGE)!=PackageManager.PERMISSION_GRANTED){
-			if(ActivityCompat.shouldShowRequestPermissionRationale(DfuActivity.this,
-					Manifest.permission.WRITE_EXTERNAL_STORAGE)){
+		if (ContextCompat.checkSelfPermission(DfuActivity.this,
+				Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+			if (ActivityCompat.shouldShowRequestPermissionRationale(DfuActivity.this,
+					Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
 				ActivityCompat.requestPermissions(DfuActivity.this,
 						new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, MY_PERMISSION_RQUEST_STORAGE);
-			}else{
+			} else {
 				ActivityCompat.requestPermissions(DfuActivity.this,
 						new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, MY_PERMISSION_RQUEST_STORAGE);
 			}
-		}else{
+		} else {
 
 		}
 		edtraw.setOnClickListener(new View.OnClickListener() {
@@ -297,8 +293,6 @@ public class DfuActivity extends AppCompatActivity implements LoaderCallbacks<Cu
 				copyAsset("FW_v310.zip");
 			}
 		});
-
-
 
 		// restore saved state
 		fileType = DfuService.TYPE_AUTO; // Default
@@ -322,65 +316,68 @@ public class DfuActivity extends AppCompatActivity implements LoaderCallbacks<Cu
 
 	@Override
 	public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-		switch(requestCode){
-			case MY_PERMISSION_RQUEST_STORAGE:{
-				if(grantResults.length>0 &&grantResults[0]==PackageManager.PERMISSION_GRANTED){
+		super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+		switch (requestCode) {
+			case MY_PERMISSION_RQUEST_STORAGE: {
+				if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 					if (ContextCompat.checkSelfPermission(DfuActivity.this,
 							Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
 
 					}
-				}else{
-					Toast.makeText(this,"No permission granted",Toast.LENGTH_SHORT).show();
+				} else {
+					Toast.makeText(this, "No permission granted", Toast.LENGTH_SHORT).show();
 				}
 			}
 		}
 	}
-	private void copyAsset(String filename){
+
+	private void copyAsset(String filename) {
 
 		//String dirPath=Environment.getExternalStorageDirectory().getAbsolutePath()+"/MyFiles";
-		String dirPath=Environment.getExternalStorageDirectory().getAbsolutePath()+"/"+Environment.DIRECTORY_DOWNLOADS;
-		Log.d("dirpath",dirPath);
-		File dir=new File(dirPath);
-		if(!dir.exists()){
+		String dirPath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/" + Environment.DIRECTORY_DOWNLOADS;
+		Log.d("dirpath", dirPath);
+		File dir = new File(dirPath);
+		if (!dir.exists()) {
 			dir.mkdirs();
 		}
-		AssetManager assetManager=getAssets();
-		InputStream in=null;
-		OutputStream out=null;
+		AssetManager assetManager = getAssets();
+		InputStream in = null;
+		OutputStream out = null;
 
-		try{
+		try {
 
-			in=assetManager.open(filename);
-			File outFile=new File(dirPath, filename);
-			out=new FileOutputStream(outFile);
-			copyFile(in,out);
-			Toast.makeText(this,"Saved!",Toast.LENGTH_SHORT).show();
-		}  catch (IOException e) {
+			in = assetManager.open(filename);
+			File outFile = new File(dirPath, filename);
+			out = new FileOutputStream(outFile);
+			copyFile(in, out);
+			Toast.makeText(this, "Saved!", Toast.LENGTH_SHORT).show();
+		} catch (IOException e) {
 			e.printStackTrace();
 			Toast.makeText(this, "Failed", Toast.LENGTH_SHORT).show();
-		} finally{
-			if(in!=null){
-				try{
+		} finally {
+			if (in != null) {
+				try {
 					in.close();
-				}catch (IOException e){
+				} catch (IOException e) {
 					e.printStackTrace();
 				}
 			}
-			if(out!=null){
-				try{
+			if (out != null) {
+				try {
 					out.close();
-				}catch (IOException e){
+				} catch (IOException e) {
 					e.printStackTrace();
 				}
 			}
 		}
 
 	}
-	private void copyFile(InputStream in, OutputStream out) throws IOException{
-		byte[] buffer=new byte[1024];
+
+	private void copyFile(InputStream in, OutputStream out) throws IOException {
+		byte[] buffer = new byte[1024];
 		int read;
-		while((read=in.read(buffer))!=-1){
-			out.write(buffer,0,read);
+		while ((read = in.read(buffer)) != -1) {
+			out.write(buffer, 0, read);
 		}
 	}
 
@@ -480,7 +477,6 @@ public class DfuActivity extends AppCompatActivity implements LoaderCallbacks<Cu
 		final ScannerFragment dialog = ScannerFragment.getInstance(null); // Device that is advertising directly does not have the GENERAL_DISCOVERABLE nor LIMITED_DISCOVERABLE flag set.
 		dialog.show(getSupportFragmentManager(), "scan_fragment");
 	}
-
 
 
 	@Override
@@ -601,8 +597,8 @@ public class DfuActivity extends AppCompatActivity implements LoaderCallbacks<Cu
 			/*
 			 * Here we have to check the column indexes by name as we have requested for all. The order may be different.
 			 */
-			final String fileName = data.getString(data.getColumnIndex(MediaStore.MediaColumns.DISPLAY_NAME)/* 0 DISPLAY_NAME */);
-			final int fileSize = data.getInt(data.getColumnIndex(MediaStore.MediaColumns.SIZE) /* 1 SIZE */);
+			@SuppressLint("Range") final String fileName = data.getString(data.getColumnIndex(MediaStore.MediaColumns.DISPLAY_NAME)/* 0 DISPLAY_NAME */);
+			@SuppressLint("Range") final int fileSize = data.getInt(data.getColumnIndex(MediaStore.MediaColumns.SIZE) /* 1 SIZE */);
 			String filePath = null;
 			final int dataIndex = data.getColumnIndex(MediaStore.MediaColumns.DATA);
 			if (dataIndex != -1)
@@ -705,7 +701,7 @@ public class DfuActivity extends AppCompatActivity implements LoaderCallbacks<Cu
 	 * @param view a button that was pressed
 	 */
 	public void onSelectFileHelpClicked(final View view) {
-		LayoutInflater filehelp=LayoutInflater.from(this);
+		LayoutInflater filehelp = LayoutInflater.from(this);
 		final View selectfileview = filehelp.inflate(R.layout.selectfile_help, null);
 
 		new AlertDialog.Builder(this)
@@ -714,8 +710,9 @@ public class DfuActivity extends AppCompatActivity implements LoaderCallbacks<Cu
 				.setPositiveButton(R.string.ok, null)
 				.show();
 	}
+
 	public void onDeviceHelpClicked(final View view) {
-		LayoutInflater filehelp=LayoutInflater.from(this);
+		LayoutInflater filehelp = LayoutInflater.from(this);
 		final View selectfileview = filehelp.inflate(R.layout.device_help, null);
 
 		new AlertDialog.Builder(this)
@@ -724,8 +721,9 @@ public class DfuActivity extends AppCompatActivity implements LoaderCallbacks<Cu
 				.setPositiveButton(R.string.ok, null)
 				.show();
 	}
+
 	public void onUploadHelpClicked(final View view) {
-		LayoutInflater filehelp=LayoutInflater.from(this);
+		LayoutInflater filehelp = LayoutInflater.from(this);
 		final View selectfileview = filehelp.inflate(R.layout.upload_help, null);
 
 		new AlertDialog.Builder(this)
@@ -833,6 +831,16 @@ public class DfuActivity extends AppCompatActivity implements LoaderCallbacks<Cu
 		// Save current state in order to restore it if user quit the Activity
 		final SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
 		final SharedPreferences.Editor editor = preferences.edit();
+		if (ActivityCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
+			// TODO: Consider calling
+			//    ActivityCompat#requestPermissions
+			// here to request the missing permissions, and then overriding
+			//   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+			//                                          int[] grantResults)
+			// to handle the case where the user grants the permission. See the documentation
+			// for ActivityCompat#requestPermissions for more details.
+			return;
+		}
 		editor.putString(PREFS_DEVICE_NAME, selectedDevice.getName());
 		editor.putString(PREFS_FILE_NAME, fileNameView.getText().toString());
 		editor.putString(PREFS_FILE_TYPE, fileTypeView.getText().toString());

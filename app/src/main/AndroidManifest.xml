@@ -23,12 +23,13 @@
 <manifest
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:tools="http://schemas.android.com/tools"
-	package="com.remit.android.remitdfu"
-	android:installLocation="auto">
+    android:installLocation="auto">
 
 	<uses-permission android:name="android.permission.BLUETOOTH" />
 	<uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+	<uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
 	<uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
  	<uses-permission android:name="android.permission.NFC" />
 	<uses-permission android:name="no.nordicsemi.android.LOG" />
@@ -81,7 +82,8 @@
 			android:name="com.remit.android.remitdfu.dfu.DfuActivity"
 			android:icon="@mipmap/ic_launcher"
 			android:screenOrientation="portrait"
-			android:label="@string/dfu_feature_title" >
+			android:label="@string/dfu_feature_title"
+			android:exported="true">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
 				<category android:name="android.intent.category.LAUNCHER" />
@@ -111,16 +113,13 @@
 			android:name="com.remit.android.remitdfu.dfu.DfuInitiatorActivity"
 			android:label="@string/dfu_service_title"
 			android:noHistory="true"
-			android:theme="@style/AppTheme.Translucent" >
+			android:theme="@style/AppTheme.Translucent"
+			android:exported="true">
 			<intent-filter>
 				<action android:name="no.remit.android.action.DFU_UPLOAD" />
 
 				<category android:name="android.intent.category.DEFAULT" />
 			</intent-filter>
 		</activity>
-
-
-
 	</application>
-
 </manifest>

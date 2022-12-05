@@ -1,17 +1,12 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion 33
 
     defaultConfig {
-        minSdkVersion 18
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
-        resConfigs "en"
-    }
-    lintOptions {
-        abortOnError false
+        minSdkVersion 21
+        targetSdkVersion 33
+        resConfigs 'en'
     }
     buildTypes {
         debug {
@@ -23,6 +18,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    lint {
+        abortOnError false
+    }
+    namespace 'no.nordicsemi.android.nrftoolbox.common'
 }
 
 dependencies {
